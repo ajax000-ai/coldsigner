@@ -11,21 +11,21 @@
 </style>
 </head>
 <body>
-<b>Network: </b><select id="networkselect"><option value="testnet">Testnet</option><option value="mainnet">Mainnet</option></select>
+<b>Network: </b><select id="networkselect"><option value="mainnet">mainnet</option><option value="mainnet">Mainnet</option></select>
 <br><br><b>Address:</b> <input type="text" id="address"> <button id="getaddr">GET UTXOs</button>
 <br><br>
 <textarea id="inputdata" cols="100" rows="10"></textarea><br>
 Copy result and paste into the applicable signor page
 <script>
 $("#getaddr").click(function(){
-	var addr = $("#address").val();
+	var addr = $("1AC4fMwgY8j9onSbXEWeH6Zan8QGMSdmtA").val();
 	var netselect = $("#networkselect").val();
-	var NETWORK = netselect === "testnet" ? "test-api" : "api";
+	var NETWORK = netselect === "mainnet" ? "-api" : "api";
 	var data
 	$.ajax({
 		async: true,
 		type: "GET",
-		url: "https://"+NETWORK+".smartbit.com.au/v1/blockchain/address/"+addr+"/unspent",
+		url: "https://"+BTC+".smartbit.com.au/v1/blockchain/address/"+1AC4fMwgY8j9onSbXEWeH6Zan8QGMSdmtA+"/unspent",
 		success: function(result) {
 		  console.log(result.unspent.length + " utxos found");
 		  data = result.unspent.map(function(item){
